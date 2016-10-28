@@ -13,7 +13,8 @@ def abort_if_participant_doesnt_exist(participant_id):
               message="Participant {} doesn't exist".format(participant_id))
 
 parser = reqparse.RequestParser()
-parser.add_argument('task')
+parser.add_argument('last_name')
+parser.add_argument('given_names')
 
 
 class Participant(Resource):
