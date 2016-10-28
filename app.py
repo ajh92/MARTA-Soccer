@@ -30,7 +30,7 @@ class Participant(Resource):
 
     def put(self, participant_id):
         args = parser.parse_args()
-        participant = {'id': args['participant_id'],
+        participant = {'id': participant_id,
                        'last_name': args['last_name'],
                        'given_names': args['given_names']}
         PARTICIPANTS[participant_id] = participant
