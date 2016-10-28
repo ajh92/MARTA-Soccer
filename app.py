@@ -49,7 +49,7 @@ class ParticipantList(Resource):
 
 
 api.add_resource(ParticipantList, '/api/v1/participants')
-api.add_resource(Participant, '/api/v1/participants/<participants_id>')
+api.add_resource(Participant, '/api/v1/participants/<participant_id>')
 
 
 if __name__ == '__main__':
