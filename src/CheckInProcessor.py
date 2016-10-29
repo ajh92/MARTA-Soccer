@@ -54,8 +54,12 @@ class CheckInProcessor(object):
             return self.get_est_event_time(checkin['dest_id'])
 
     def process_checkin(self, checkin):
-        print("Jose checked in at " + self.stations[checkin['origin_id']] +
-              " en route to " + self.stations[checkin['dest_id']])
-        print(self.get_time_update(checkin))
+        msg = ("Jose checked in at " + self.stations[checkin['origin_id']] +
+               " en route to " + self.stations[checkin['dest_id']] + ". " +
+               self.get_time_update(checkin))
+
+        print(msg)
+        r = requests.post(os.environ['EASYSMS_URL'] + '/messages',
+                          data={'to': '+14044290402', 'body': msg})
 
         return True
