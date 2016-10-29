@@ -4,6 +4,7 @@ from sqlalchemy import select
 
 MARTA_API_KEY = os.environ['MARTA_API_KEY']
 
+
 class CheckInProcessor(object):
 
     def __init__(self, connection, meta):
@@ -27,6 +28,9 @@ class CheckInProcessor(object):
         current_train = {'TRAIN_ID': None}
         arrival_time = '<unknown>'
 
+        if(self.stations[dest_id]['marta_api_id'] is None):
+            return ""
+
         for arrival in arrivals:
             if (arrival['STATION'] == self.stations[origin_id]['marta_api_id'] and
                 120 <= int(arrival['WAITING_SECONDS']) <= best_time):
@@ -41,9 +45,7 @@ class CheckInProcessor(object):
                 " in " + arrival_time)
 
     def get_est_event_time(self, dest_id):
-        if dest_id in EVENTS:
-            return ("Estimated Event Duration: " +
-                    EVENTS[dest_id]['duration'])
+        pass
 
     def get_time_update(self, checkin):
         if checkin['dest_id'] in self.stations:
