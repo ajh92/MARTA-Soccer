@@ -3,8 +3,6 @@ import requests
 from sqlalchemy import select
 
 MARTA_API_KEY = os.environ['MARTA_API_KEY']
-EVENTS = {'TUESDAY SOCCER': {'duration': '1 hour'}}
-
 
 class CheckInProcessor(object):
 
@@ -22,7 +20,7 @@ class CheckInProcessor(object):
     def get_est_train_time(self, origin_id, dest_id):
         r = (requests.get("http://developer.itsmarta.com/RealtimeTrain/"
                           "RestServiceNextTrain/GetRealtimeArrivals?"
-                          "apikey=826ad80e-a7b4-47b5-8eb7-460320da8a19"))
+                          "apikey=" + MARTA_API_KEY))
         arrivals = r.json()
 
         best_time = float("inf")
