@@ -59,7 +59,7 @@ class CheckInProcessor(object):
                self.get_time_update(checkin))
 
         print(msg)
-        r = requests.post(os.environ['EASYSMS_URL'] + '/messages',
-                          data={'to': '+14044290402', 'body': msg})
+#        r = requests.post(os.environ['EASYSMS_URL'] + '/messages',
+  #                        data={'to': '+14044290402', 'body': msg})
 
         return True
