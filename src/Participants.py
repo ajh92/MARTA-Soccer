@@ -1,6 +1,12 @@
+import os
 from flask_restful import abort, Resource, reqparse
+from sqlalchemy import MetaData, create_engine, select
 
-participants = {}
+engine = create_engine(os.environ['DATABASE_URL'])
+meta = MetaData()
+meta.reflect(bind=engine)
+
+connection = engine.connect()
 
 
 class Participant(Resource):
